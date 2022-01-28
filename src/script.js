@@ -18,11 +18,12 @@ const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
 // Objects
-// const geometry = new THREE.TorusGeometry( .7, .2, 16, 100 );
-const geometry = new THREE.SphereBufferGeometry(.5, 64, 64)
+const geometry = new THREE.TorusGeometry( 10, 5, 25, 125);
+// const geometry = new THREE.SphereBufferGeometry(.5, 64, 64)
 
 // Materials
 
+// const material = new THREE.MeshBasicMaterial()
 const material = new THREE.MeshStandardMaterial()
 material.metalness = 0.7
 material.roughness = 0.2
@@ -36,15 +37,16 @@ scene.add(sphere)
 
 // Lights
 
-const pointLight = new THREE.PointLight(0xffffff, 0.1)
-pointLight.position.x = 2
-pointLight.position.y = 3
-pointLight.position.z = 4
-scene.add(pointLight)
+// const pointLight = new THREE.PointLight(0xffffff, 0.1)
+const light = new THREE.AmbientLight( 0x404040)
+light.position.x = 2
+light.position.y = 3
+light.position.z = 4
+scene.add(light)
 
 // Light 2
 
-const pointLight2 = new THREE.PointLight(0xff0000, 2)
+const pointLight2 = new THREE.PointLight(0xffff00, 2)
 
 pointLight2.position.set(-1.86,1,-1.65)
 pointLight2.intensity = 10
@@ -64,7 +66,7 @@ light1.add(pointLight2, 'intensity').min(0).max(10).step(0.01)
 
 // Light 3
 
-const pointLight3 = new THREE.PointLight(0xe1ff, 2)
+const pointLight3 = new THREE.PointLight(0x7fffd4, 2)
 
 pointLight3.position.set(2.13,-3,-1.98)
 pointLight3.intensity = 6.8
@@ -121,7 +123,7 @@ window.addEventListener('resize', () =>
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
 camera.position.x = 0
 camera.position.y = 0
-camera.position.z = 2
+camera.position.z = 30
 scene.add(camera)
 
 // Controls
